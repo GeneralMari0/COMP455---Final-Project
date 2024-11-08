@@ -1,4 +1,4 @@
-1. Install Node.js https://nodejs.org/en and Python 3.12 https://www.python.org/downloads/release/python-3127/
+1. Install Node.js https://nodejs.org/en and Python 3.12 https://www.python.org/downloads/release/python-3127/ and git https://git-scm.com/downloads
 
 2. Open a terminal and type the commands one by one
 
@@ -35,6 +35,6 @@ npm i
 npm start
 ```
 
-6. That should open your internet browser to localhost:3000. Try out the search.
+6. That should open your browser to localhost:3000 or http://127.0.0.1:3000. Try out the search.
 
-You can modify any code in the frontend folder and it should be updated (you may have to refresh the page). For the backend, I think you have to restart the server every time you update the code. So in the terminal where you ran `python app.py` just stop the server with Ctrl+C and run the `python app.py` command again.
+You can modify any code in the frontend folder and it should be updated without restarting the frontend terminal (you may have to refresh the page in chrome or whatever browser). For the backend, I think you have to restart the server every time you update the code. So in the terminal where you ran `python app.py` just stop the server with Ctrl+C and run the `python app.py` command again.

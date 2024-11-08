@@ -1,1 +1,0 @@
-python -m pip install Flask Flask-Cors Flask-SQLAlchemy

@@ -24,3 +24,6 @@ yarn-error.log*
 
 .idea
 *.iml
+
+# csv - too large for github
+pandas/data/GoodReads_100k_books.csv

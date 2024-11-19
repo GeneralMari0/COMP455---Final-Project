@@ -1,5 +1,7 @@
 1. Install Elasticsearch 8.16 https://www.elastic.co/downloads/elasticsearch
 
+**NOTE**: You need to have Java installed (https://www.java.com/en/download/manual.jsp)
+
 2. Unzip the Elasticsearch archive
 3. Run bin/elasticsearch (or bin\elasticsearch.bat on Windows)
 4. Shutdown the server terminal

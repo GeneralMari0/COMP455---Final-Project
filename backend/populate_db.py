@@ -1,24 +1,34 @@
-from app import app, db, Book
+from app import app, Book
+from elasticsearch_dsl import connections
 
-def init_db():
-    with app.app_context():
-        db.create_all()
-        
-        # Add sample data 
-        if not Book.query.first(): 
-            # Sample data
-            book1 = Book(title="The Great Gatsby", author="F. Scott Fitzgerald", genre="Fiction", pages=180)
-            book2 = Book(title="1984", author="George Orwell", genre="Dystopian", pages=328)
-            book3 = Book(title="To Kill a Mockingbird", author="Harper Lee", genre="Fiction", pages=281)
+def init_es():
+    # Connect to Elasticsearch
+    connections.create_connection(hosts=['http://localhost:9200'])
 
-            db.session.add(book1)
-            db.session.add(book2)
-            db.session.add(book3)
-            db.session.commit()
-            print("Sample data added to the database.")
-        else:
-            print("Database already initialized.")
+    # Initialize the index
+    if not Book._index.exists():
+        Book.init()
+        print("Created Elasticsearch index 'books'.")
+    else:
+        print("Elasticsearch index 'books' already exists.")
+
+    # Check if the index is empty
+    s = Book.search()
+    response = s.execute()
+    if len(response.hits) == 0:
+        # Add sample data
+        book1 = Book(meta={'id': 1}, title="The Great Gatsby", author="F. Scott Fitzgerald", genre="Fiction", pages=180)
+        book2 = Book(meta={'id': 2}, title="1984", author="George Orwell", genre="Dystopian", pages=328)
+        book3 = Book(meta={'id': 3}, title="To Kill a Mockingbird", author="Harper Lee", genre="Fiction", pages=281)
+
+        book1.save()
+        book2.save()
+        book3.save()
+
+        print("Sample data added to Elasticsearch index.")
+    else:
+        print("Elasticsearch index already contains data.")
 
 if __name__ == '__main__':
-    init_db()
-    print("Database initialized successfully.")
+    init_es()
+    print("Elasticsearch initialized successfully.")

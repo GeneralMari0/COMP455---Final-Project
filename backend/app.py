@@ -1,20 +1,22 @@
 from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from elasticsearch_dsl import Document, Text, Integer, Search, connections
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for cross-origin requests (separate frontend)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///books.db'
 
-db = SQLAlchemy(app)
+# Connect to Elasticsearch
+connections.create_connection(hosts=['http://localhost:9200'])
 
-# Book model 
-class Book(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255), nullable=False)
-    author = db.Column(db.String(255), nullable=False)
-    genre = db.Column(db.String(255), nullable=False)
-    pages = db.Column(db.Integer, nullable=False)
+# Book model
+class Book(Document):
+    title = Text()
+    author = Text()
+    genre = Text()
+    pages = Integer()
+
+    class Index:
+        name = 'books'
 
 # Endpoint to get books based on filters
 @app.route('/api/books', methods=['GET'])
@@ -26,30 +28,34 @@ def get_books():
     max_pages = request.args.get('max_pages', None, type=int)
     min_pages = request.args.get('min_pages', None, type=int)
 
-    # Base query
-    query = Book.query
+    # Base search
+    s = Search(index='books')
 
     # Apply filters
     if title:
-        query = query.filter(Book.title.ilike(f"%{title}%"))
+        s = s.query('match_phrase_prefix', title=title)
     if author:
-        query = query.filter(Book.author.ilike(f"%{author}%"))
+        s = s.query('match_phrase_prefix', author=author)
     if genre:
-        query = query.filter(Book.genre == genre)
-    if max_pages is not None:
-        query = query.filter(Book.pages <= max_pages)
-    if min_pages is not None:
-        query = query.filter(Book.pages >= min_pages)
+        s = s.filter('term', genre=genre)
+    if max_pages is not None or min_pages is not None:
+        page_range = {}
+        if min_pages is not None:
+            page_range['gte'] = min_pages
+        if max_pages is not None:
+            page_range['lte'] = max_pages
+        s = s.filter('range', pages=page_range)
 
-    # Limit the results to 100 
-    # (maybe do pagination instead? might be unnecessarily complicated for this project idk)
-    query = query.limit(100)
+    # Limit the results to 100
+    s = s[:100]
 
-    # Execute query and serialize results
-    books = query.all()
+    # Execute search and serialize results
+    response = s.execute()
+    books = response.hits
+
     result = [
         {
-            "id": book.id,
+            "id": book.meta.id,
             "title": book.title,
             "author": book.author,
             "genre": book.genre,

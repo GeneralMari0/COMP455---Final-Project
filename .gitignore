@@ -26,4 +26,4 @@ yarn-error.log*
 *.iml
 
 # csv - too large for github
-pandas/data/GoodReads_100k_books.csv
+./elastic-search-test/data/GoodReads_100k_books.csv

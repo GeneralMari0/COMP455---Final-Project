@@ -1,0 +1,130 @@
+Top 10 Fantasy books:
+                                                               title  rating  totalratings
+Harry Potter and the Order of the Phoenix (Harry Potter, #5, Part 1)    4.62        133779
+                                Harry Potter and the Deathly Hallows    4.62       2984351
+                                                 The Wise Man's Fear    4.54        456510
+                                                  The House of Hades    4.52        294712
+                                                      The Green Mile    4.45        261605
+                                         Death Note, Vol. 1: Boredom    4.45        209127
+                                                  The Mark of Athena    4.44        473507
+                                             Attack on Titan, Vol. 1    4.44        142149
+                                                   A Game of Thrones    4.44       2097707
+                             Harry Potter and the Chamber of Secrets    4.43       2934616
+
+Top 10 Adventure books:
+                                                               title  rating  totalratings
+                                Harry Potter and the Deathly Hallows    4.62       2984351
+Harry Potter and the Order of the Phoenix (Harry Potter, #5, Part 1)    4.62        133779
+                                                 The Wise Man's Fear    4.54        456510
+              The Hunger Games: Official Illustrated Movie Companion    4.52        175110
+                                                  The House of Hades    4.52        294712
+                                                  The Mark of Athena    4.44        473507
+                                                   A Game of Thrones    4.44       2097707
+                             Harry Potter and the Chamber of Secrets    4.43       2934616
+                                                              Winter    4.42        216753
+                                          A Breath of Snow and Ashes    4.42        149002
+
+Top 10 Romance books:
+                                                 title  rating  totalratings
+The Hunger Games: Official Illustrated Movie Companion    4.52        175110
+                                    The House of Hades    4.52        294712
+                                        Redeeming Love    4.50        226121
+                                    The Mark of Athena    4.44        473507
+                                                Winter    4.42        216753
+                            A Breath of Snow and Ashes    4.42        149002
+                                      Clockwork Prince    4.42        476789
+                                                 Cress    4.41        299466
+                                  The Song of Achilles    4.40        339638
+                                     Crown of Midnight    4.39        402070
+
+Top 10 Historical books:
+                                                 title  rating  totalratings
+                                     The Complete Maus    4.53        153660
+                                        Redeeming Love    4.50        226121
+                                      Clockwork Prince    4.42        476789
+                            A Breath of Snow and Ashes    4.42        149002
+                                  The Song of Achilles    4.40        339638
+                              A Thousand Splendid Suns    4.38       1218044
+                                               Voyager    4.37        269786
+Maus II: A Survivor's Tale: And Here My Troubles Began    4.36        126731
+                                   Winter of the World    4.34        134185
+                                                 Night    4.34       1023592
+
+Top 10 Academic books:
+                                          title  rating  totalratings
+                                         Wonder    4.42        810875
+                                     Effortless    4.35        114133
+                                          Night    4.34       1023592
+                        Miss Nelson Is Missing!    4.29        103790
+                              Gabriel's Rapture    4.22        110248
+                               Walking Disaster    4.19        172528
+             The Coincidence of Callie & Kayden    4.18        111916
+                                   Wait for You    4.17        142117
+Hamlet: Screenplay, Introduction And Film Diary    4.14        182760
+                        The Things They Carried    4.13        266287
+
+Top 10 Horror books:
+                                                                    title  rating  totalratings
+                                                           The Green Mile    4.45        261605
+                                              Death Note, Vol. 1: Boredom    4.45        209127
+                                                  Attack on Titan, Vol. 1    4.44        142149
+                                                                The Stand    4.34        652033
+                                                                 11/22/63    4.30        448150
+                                  The Walking Dead, Vol. 1: Days Gone Bye    4.27        209372
+                                                              The Shining    4.24       1192500
+                                                                   Misery    4.18        532544
+                                                               Neverwhere    4.16        452276
+The Hot Zone: The Terrifying True Story of the Origins of the Ebola Virus    4.13        102049
+
+Top 10 Mystery books:
+                      title  rating  totalratings
+             The Green Mile    4.45        261605
+Death Note, Vol. 1: Boredom    4.45        209127
+                   11/22/63    4.30        448150
+    Miss Nelson Is Missing!    4.29        103790
+     The Shadow of the Wind    4.27        502284
+   And Then There Were None    4.26        916626
+                The Shining    4.24       1192500
+The Murder of Roger Ackroyd    4.24        174037
+                     Misery    4.18        532544
+ The Wind-Up Bird Chronicle    4.16        230353
+
+Top 10 Crime books:
+                      title  rating  totalratings
+             The Green Mile    4.45        261605
+   And Then There Were None    4.26        916626
+The Murder of Roger Ackroyd    4.24        174037
+                     Misery    4.18        532544
+              Eleven on Top    4.16        101920
+         A Study in Scarlet    4.14        351466
+           Nineteen Minutes    4.13        312260
+       The Name of the Rose    4.13        315717
+          Death on the Nile    4.11        148757
+        Along Came a Spider    4.11        416306
+
+Top 10 Nonfiction books:
+                                                                                              title  rating  totalratings
+                                                                                  The Complete Maus    4.53        153660
+                                             The Hunger Games: Official Illustrated Movie Companion    4.52        175110
+                                             Maus II: A Survivor's Tale: And Here My Troubles Began    4.36        126731
+                                                                                              Night    4.34       1023592
+     The Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics    4.34        240740
+                                                                  On Writing: A Memoir of the Craft    4.32        238200
+                                                                         The Richest Man in Babylon    4.26        126932
+Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead    4.25        150545
+                                                                    I Know Why the Caged Bird Sings    4.25        439482
+                                                       Moneyball: The Art of Winning an Unfair Game    4.24        110058
+
+Top 10 Fiction books:
+                                                               title  rating  totalratings
+Harry Potter and the Order of the Phoenix (Harry Potter, #5, Part 1)    4.62        133779
+                                Harry Potter and the Deathly Hallows    4.62       2984351
+                                                 The Wise Man's Fear    4.54        456510
+                                                   The Complete Maus    4.53        153660
+                                                  The House of Hades    4.52        294712
+              The Hunger Games: Official Illustrated Movie Companion    4.52        175110
+                                                      Redeeming Love    4.50        226121
+                                         Death Note, Vol. 1: Boredom    4.45        209127
+                                                      The Green Mile    4.45        261605
+                                                   A Game of Thrones    4.44       2097707
+

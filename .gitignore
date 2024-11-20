@@ -24,3 +24,6 @@ yarn-error.log*
 
 .idea
 *.iml
+
+# full dataset
+reccomendations/GoodReads_100k_books.csv

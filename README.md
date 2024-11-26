@@ -30,7 +30,7 @@ python app.py
 python populate_db.py
 ```
 
-11. You should see "Database initialized successfully." Navigate to the frontend folder (or open a new terminal in the frontend folder), and install the required Node.js packages:
+11. You should see "Database initialized successfully." Navigate to the frontend folder and install the required Node.js packages:
 ```bash
 cd ..\frontend
 npm i

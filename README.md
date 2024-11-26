@@ -1,59 +1,47 @@
-1. Install Elasticsearch 8.16 https://www.elastic.co/downloads/elasticsearch
+1. Download ElasticSearch 8.16.1 (https://www.elastic.co/downloads/elasticsearch), and extract the archive.
+2. Enter the folder containing the contents of the archive and run bin\elasticsearch.bat. (bin/elasticsearch on Linux)
 
-**NOTE**: You need to have Java installed (https://www.java.com/en/download/manual.jsp)
+**NOTE**: If the Java JDK bundled with ElasticSearch does not work out of the box, it may be easier to install Java system-wide. (https://www.java.com/en/download)
 
-2. Unzip the Elasticsearch archive
-3. Run bin/elasticsearch (or bin\elasticsearch.bat on Windows)
-4. Shutdown the server terminal
-5. Edit config\elasticsearch.yml and set the following to false
+3. Shutdown the server (Ctrl+C).
+4. Set the following from the default of "true" to "false" in config\elasticsearch.yml:
 ```
 xpack.security.enabled: false
-xpack.security.transport.ssl.enabled: false
-xpack.security.http.ssl.enabled: false
 ```
-6. Start the server again. (bin\elasticsearch.bat) 
-7. Open an terminal and type the following
+
+5. Start the server again. (bin\elasticsearch.bat) 
+6. Open a terminal and run the following:
 ```bash
-curl http://localhost:9200/_cluster/health?pretty
+curl "http://localhost:9200/_cluster/health?pretty"
 ```
-8. If you see `status: "red"` then you either don't have enough disk space (you need minimum 50 GB) or something else went wrong, it needs to say yellow or green
-9. Install Node.js https://nodejs.org/en and Python 3.12 https://www.python.org/downloads/release/python-3127/ and git https://git-scm.com/downloads
 
-10. Open a terminal and type the commands one by one
-
+7. If you see `status: "red"` then you don't have enough disk space (minimum 50 GB) or something else went wrong. It needs to say yellow or green to function properly.
+8. Install Node.js (https://nodejs.org/en/download), Python 3.12 (https://www.python.org/downloads/release/python-3127), and Git. (https://git-scm.com/downloads)
+9. Open a terminal and run the commands one by one:
 ```bash
 git clone https://github.com/GeneralMari0/COMP455---Final-Project
-cd COMP455---Final-Project
-
-cd backend
+cd COMP455---Final-Project\backend
 python -m pip install Flask Flask-Cors elasticsearch-dsl
 python app.py
 ```
 
-11. Open a new terminal **in the backend folder** and type the command
-
+10. Open a new terminal **in the backend folder** and populate the database:
 ```bash
 python populate_db.py
 ```
 
-12. You should see "Database initialized successfully." Navigate to the frontend now using the following commands (or just open a new terminal in the frontend folder).
-
+11. You should see "Database initialized successfully." Navigate to the frontend folder (or open a new terminal in the frontend folder), and install the required Node.js packages:
 ```bash
-cd ..
-cd frontend
-```
-
-13. Install the modules with the command:
-
-```bash
+cd ..\frontend
 npm i
 ```
 
-14. Wait for all the modules to be installed. Then type the command:
+12. After the modules are installed, start the frontend:
 ```bash
 npm start
 ```
 
-15. That should open your browser to localhost:3000 or http://127.0.0.1:3000. Try out the search.
+13. You browser should open to http://localhost:3000 (or http://127.0.0.1:3000), where you can try out the search.
 
-You can modify any code in the frontend folder and it should be updated without restarting the frontend terminal (you may have to refresh the page in chrome or whatever browser). For the backend, I think you have to restart the server every time you update the code. So in the terminal where you ran `python app.py` just stop the server with Ctrl+C and run the `python app.py` command again.
+
+Note: You can make changes to code in the frontend folder and it should be updated without having to restart (you may still have to refresh the page in your browser). For modifications to the backend, you may have to restart the server every time. To do this, stop the server in the terminal where `python app.py` is running (Ctrl+C), and run it again.

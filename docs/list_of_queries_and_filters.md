@@ -1,8 +1,8 @@
 # Potential Queries and Filters
 Listing out the search parameters and filters tha we can use.
-We don't have implement all of them, these are just some ideas
+We don't have to implement all of them, these are just some ideas.
 ## Queries
-return most relevant results (don't have to be an exact match
+return most relevant results (don't have to be an exact match)
 - author
 - genre
 - desc (enter keywords match to desc)
@@ -16,5 +16,3 @@ only return exact matches
 - rating: only return books that meet the rating threshold
 - age demographic: in genre match "adult", "Young Adult", "Chidrens", "Middle Grade"
 - bookformat: Hardcover, Paperback, ebook, other
-
-

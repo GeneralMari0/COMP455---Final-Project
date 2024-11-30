@@ -49,6 +49,11 @@ def get_books():
         s = s.query('match_phrase', description=description)
     if isbn13:
         s = s.filter('term', isbn13=isbn13)
+    # Right now we match ALL genres, if we want to match ANY genres, use this code instead
+    # I might make it so the user can choose ALL or ANY depending on their preference
+    # But right now this should be good enough for the assignment
+    # if genre_list:
+    #     s = s.filter('terms', genre=genre_list)
     if genre_list:
         for genre in genre_list:
             s = s.filter('term', genre=genre)
@@ -67,8 +72,8 @@ def get_books():
             rating_range['lte'] = max_rating
         s = s.filter('range', rating=rating_range)
 
-    # Limit the results to 100
-    s = s[:100]
+    # Limit the results to 50
+    s = s[:50]
 
     # Execute search and serialize results
     response = s.execute()

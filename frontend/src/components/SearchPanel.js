@@ -76,6 +76,7 @@ const SearchPanel = ({ onSearch }) => {
             />
             <input
                 type="number"
+		min="0"
                 placeholder="Min Pages"
                 value={minPages}
                 onChange={(e) => setMinPages(e.target.value)}
@@ -83,12 +84,15 @@ const SearchPanel = ({ onSearch }) => {
             <input
                 type="number"
                 placeholder="Max Pages"
+		min="1"
                 value={maxPages}
                 onChange={(e) => setMaxPages(e.target.value)}
             />
             <input
                 type="number"
                 step="0.1"
+		min="0.0"
+		max="5.0"
                 placeholder="Min Rating"
                 value={minRating}
                 onChange={(e) => setMinRating(e.target.value)}
@@ -96,6 +100,8 @@ const SearchPanel = ({ onSearch }) => {
             <input
                 type="number"
                 step="0.1"
+		min="0.0"
+		max="5.0"
                 placeholder="Max Rating"
                 value={maxRating}
                 onChange={(e) => setMaxRating(e.target.value)}

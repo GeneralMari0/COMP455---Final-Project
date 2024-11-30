@@ -16,12 +16,32 @@ const BookResults = ({ books }) => {
                             display: 'flex',
                         }}
                     >
-                        {book.image && (
+                        {book.image ? (
                             <img
                                 src={book.image}
                                 alt={book.title}
-                                style={{ width: '100px', height: '150px', marginRight: '10px' }}
+                                style={{
+                                    width: '100px',
+                                    height: '150px',
+                                    marginRight: '10px',
+                                }}
                             />
+                        ) : (
+                            <div
+                                style={{
+                                    width: '100px',
+                                    height: '150px',
+                                    marginRight: '10px',
+                                    backgroundColor: '#ddd',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: '#555',
+                                    fontSize: '12px',
+                                }}
+                            >
+                                No Image
+                            </div>
                         )}
                         <div>
                             <h3>{book.title}</h3>

@@ -84,7 +84,7 @@ const SearchPanel = ({ onSearch }) => {
             <input
                 type="number"
                 placeholder="Max Pages"
-		min="1"
+		min="0"
                 value={maxPages}
                 onChange={(e) => setMaxPages(e.target.value)}
             />

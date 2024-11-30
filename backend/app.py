@@ -29,6 +29,8 @@ def get_books():
     # Get filter parameters from query string
     title = request.args.get('title', '', type=str)
     author = request.args.get('author', '', type=str)
+    description = request.args.get('description', '', type=str)
+    isbn13 = request.args.get('isbn13', '', type=str)
     genre_list = request.args.getlist('genre')
     max_pages = request.args.get('max_pages', None, type=int)
     min_pages = request.args.get('min_pages', None, type=int)
@@ -43,6 +45,10 @@ def get_books():
         s = s.query('match_phrase_prefix', title=title)
     if author:
         s = s.query('match_phrase_prefix', author=author)
+    if description:
+        s = s.query('match_phrase', description=description)
+    if isbn13:
+        s = s.filter('term', isbn13=isbn13)
     if genre_list:
         for genre in genre_list:
             s = s.filter('term', genre=genre)

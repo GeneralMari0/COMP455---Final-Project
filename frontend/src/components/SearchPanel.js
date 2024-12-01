@@ -138,7 +138,7 @@ const SearchPanel = ({ onSearch }) => {
 		            value={genre}
 		            onClick={(e) => {
 		                handleGenreChange(e)
-		                if (e.target.className == "buttonOn") {
+		                if (e.target.className === "buttonOn") {
 			            e.target.className = "buttonOff"
 			        } else {
 			            e.target.className = "buttonOn"

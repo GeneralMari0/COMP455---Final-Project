@@ -37,7 +37,7 @@ const App = () => {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
+        <div>
             <h1>Book Search</h1>
             <SearchPanel onSearch={getBooks} />
             <BookResults books={books} />

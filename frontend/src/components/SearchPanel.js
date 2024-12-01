@@ -49,83 +49,104 @@ const SearchPanel = ({ onSearch }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
-            <input
-                type="text"
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Author"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="ISBN13"
-                value={isbn13}
-                onChange={(e) => setIsbn13(e.target.value)}
-            />
-            <input
-                type="number"
-		min="0"
-                placeholder="Min Pages"
-                value={minPages}
-                onChange={(e) => setMinPages(e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder="Max Pages"
-		min="0"
-                value={maxPages}
-                onChange={(e) => setMaxPages(e.target.value)}
-            />
-            <input
-                type="number"
-                step="0.1"
-		min="0.0"
-		max="5.0"
-                placeholder="Min Rating"
-                value={minRating}
-                onChange={(e) => setMinRating(e.target.value)}
-            />
-            <input
-                type="number"
-                step="0.1"
-		min="0.0"
-		max="5.0"
-                placeholder="Max Rating"
-                value={maxRating}
-                onChange={(e) => setMaxRating(e.target.value)}
-            />
-            <div>
-                <label><strong>Genres:</strong></label>
-                {genres.map((genre) => (
-                    <div key={genre}>
-                        <input
+        <form onSubmit={handleSubmit}>
+	    <div>
+                <input
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
+	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
+                />
+                <input
+                    type="text"
+                    placeholder="Author"
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
+	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
+                />
+                <input
+                    type="text"
+                    placeholder="Description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
+	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
+                />
+                <input
+                    type="text"
+                    placeholder="ISBN13"
+                    value={isbn13}
+                    onChange={(e) => setIsbn13(e.target.value)}
+	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
+	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
+                />
+                <input
+                    type="number"
+    		    min="0"
+                    placeholder="Min Pages"
+                    value={minPages}
+                    onChange={(e) => setMinPages(e.target.value)}
+	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
+	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
+                />
+                <input
+                    type="number"
+                    placeholder="Max Pages"
+    		    min="0"
+                    value={maxPages}
+                    onChange={(e) => setMaxPages(e.target.value)}
+	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
+	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
+                />
+                <input
+                    type="number"
+                    step="0.1"
+    		    min="0.0"
+    		    max="5.0"
+                    placeholder="Min Rating"
+                    value={minRating}
+                    onChange={(e) => setMinRating(e.target.value)}
+	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
+	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
+                />
+                <input
+                    type="number"
+                    step="0.1"
+    		    min="0.0"
+    		    max="5.0"
+                    placeholder="Max Rating"
+                    value={maxRating}
+                    onChange={(e) => setMaxRating(e.target.value)}
+	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
+	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
+                />
+	    </div>
+	    <div>
+            <label><strong>Genres:</strong></label>
+	        <div>
+                    {genres.map((genre) => (
+	                <input
                             type="button"
-			    value={genre}
-			    onClick={(e) => {
-				    handleGenreChange(e)
-				    if (e.target.className == "buttonOn") {
-				    	e.target.className = "buttonOff"
-				    } else {
-				    	e.target.className = "buttonOn"
-				    }
-			    } }
+			    key={genre}
+		            value={genre}
+		            onClick={(e) => {
+		                handleGenreChange(e)
+		                if (e.target.className == "buttonOn") {
+			            e.target.className = "buttonOff"
+			        } else {
+			            e.target.className = "buttonOn"
+			        }
+		            } }
                         />
-                    </div>
-                ))}
-            </div>
-            <button type="submit">Search</button>
+                    ))}
+	        </div>
+	    </div>
+	    <div>
+	        <input type="submit" value="Search!" />
+	    </div>
         </form>
     );
 };

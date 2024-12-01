@@ -61,7 +61,7 @@ const BookResults = ({ books }) => {
                             <p>
                                 <strong>ISBN13:</strong> {book.isbn13}
                             </p>
-                            <p class="description">
+                            <p className="description">
                                 <strong>Description:</strong> {book.description}
                             </p>
                             {book.link && (

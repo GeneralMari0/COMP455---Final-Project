@@ -12,10 +12,41 @@ code {
     monospace;
 }
 
+input{
+	border-radius: 7px;
+	border-width: 3px;
+	border-color: #d1f2eb;
+	padding: 10px;
+	background-color: #e8f8f5;
+	border-style: solid;
+}
+
+input[type=button]:hover{
+	cursor: pointer;
+}
+
+@keyframes buttonTurnOn{
+	from { color: black; border-color: #d1f2eb; background-color: #e8f8f5; }
+	to { color: white; border-color: #148f77; background-color: #0e6655; }
+}
+
+.buttonDefault{
+
+}
+
 .buttonOn{
-	border-style: inset;
+	border-color: #148f77;
+	background-color: #0e6655;
+	color: white;
+	animation: buttonTurnOn 0.3s;
+}
+
+
+@keyframes buttonTurnOff {
+	from { color: white; border-color: #148f77; background-color: #0e6655; }
+	to { color: black; border-color: #d1f2eb; background-color: #e8f8f5; }
 }
 
 .buttonOff{
-	border-style: outset;
+	animation: buttonTurnOff 0.3s;
 }

@@ -112,7 +112,6 @@ const SearchPanel = ({ onSearch }) => {
                     <div key={genre}>
                         <input
                             type="button"
-			    className="buttonOff"
 			    value={genre}
 			    onClick={(e) => {
 				    handleGenreChange(e)

@@ -43,7 +43,7 @@ const BookResults = ({ books }) => {
                                 No Image
                             </div>
                         )}
-                        <div>
+                        <div className="bookEntry">
                             <h3>{book.title}</h3>
                             <p>
                                 <strong>Author:</strong> {book.author}

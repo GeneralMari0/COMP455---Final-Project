@@ -40,8 +40,8 @@ const SearchPanel = ({ onSearch }) => {
     };
 
     const handleGenreChange = (e) => {
-        const { value, checked } = e.target;
-        if (checked) {
+        const { value } = e.target;
+        if (!selectedGenres.includes(value)) {
             setSelectedGenres([...selectedGenres, value]);
         } else {
             setSelectedGenres(selectedGenres.filter((g) => g !== value));
@@ -111,12 +111,18 @@ const SearchPanel = ({ onSearch }) => {
                 {genres.map((genre) => (
                     <div key={genre}>
                         <input
-                            type="checkbox"
-                            value={genre}
-                            checked={selectedGenres.includes(genre)}
-                            onChange={handleGenreChange}
+                            type="button"
+			    className="buttonOff"
+			    value={genre}
+			    onClick={(e) => {
+				    handleGenreChange(e)
+				    if (e.target.className == "buttonOn") {
+				    	e.target.className = "buttonOff"
+				    } else {
+				    	e.target.className = "buttonOn"
+				    }
+			    } }
                         />
-                        <label>{genre}</label>
                     </div>
                 ))}
             </div>

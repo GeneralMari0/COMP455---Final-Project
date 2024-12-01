@@ -85,6 +85,7 @@ const SearchPanel = ({ onSearch }) => {
                 />
                 <input
                     type="number"
+	    	    size="8"
     		    min="0"
                     placeholder="Min Pages"
                     value={minPages}
@@ -94,6 +95,7 @@ const SearchPanel = ({ onSearch }) => {
                 />
                 <input
                     type="number"
+	    	    size="8"
                     placeholder="Max Pages"
     		    min="0"
                     value={maxPages}
@@ -103,6 +105,7 @@ const SearchPanel = ({ onSearch }) => {
                 />
                 <input
                     type="number"
+	    	    size="8"
                     step="0.1"
     		    min="0.0"
     		    max="5.0"
@@ -114,6 +117,7 @@ const SearchPanel = ({ onSearch }) => {
                 />
                 <input
                     type="number"
+	    	    size="8"
                     step="0.1"
     		    min="0.0"
     		    max="5.0"

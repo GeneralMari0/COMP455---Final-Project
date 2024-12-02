@@ -1,9 +1,7 @@
-import numpy as np
 import pandas as pd
 
 """
 Using Pandas to find the highest rated books in each genre
-
 Referencing: https://pandas.pydata.org/docs/user_guide/10min.html
 """
 
@@ -44,19 +42,24 @@ genres = [
 ]
 
 # since we want at least 10 books for each category,
-# we will need to lower the rating requirement
+# we will need to lower the rating requirement,
+# as some categories are less popular
 filtered_data = data[data["totalratings"] >= 100000]
 
+# write the lists out to a text file
 with open("top_books_by_genre.txt", "w") as file:
     for genre in genres:
+
+        # filter by category, and sort by ratings
         sorted = filtered_data[
             filtered_data["genre"].str.contains(genre, case=False, na=False)
         ].sort_values(by="rating", ascending=False)
 
+        # pick the top 10 results
         result = sorted.iloc[:10][["title", "rating", "totalratings"]]
 
+        # write out to the file
         file.write(f"Top 10 {genre} books:\n")
         # write as a string
         file.write(result.to_string(index=False))
         file.write("\n\n")
-

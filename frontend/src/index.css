@@ -13,6 +13,22 @@ code {
     monospace;
 }
 
+.columnContainer{
+	display: flex;
+}
+
+.bookResults{
+	align-self: flex-start;
+	flex: 2;
+}
+
+.recommendations{
+	align-self: flex-start;
+	flex: 1;
+	margin: 10px;
+	padding: 10px;
+}
+
 .bookEntry{
 	flex: 1;
 }

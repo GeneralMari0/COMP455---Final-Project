@@ -60,14 +60,38 @@ input[type=button]:hover{
 	cursor: pointer;
 }
 
-input[type=submit]{
+.initSearch{
 	font-size: 20px;
 	font-weight: bold;
 	border-color: #1abc9c;
 }
 
-input[type=submit]:hover{
+@keyframes searchUnhover {
+	from { color: white; border-color: #148f77; background-color: #0e6655; }
+	to { color: black; border-color: #1abc9c; background-color: #e8f8f5; }
+}
+
+.searchUnhovered{
+	font-size: 20px;
+	font-weight: bold;
+	border-color: #1abc9c;
+	animation: searchUnhover 0.3s;
+}
+
+@keyframes searchHover{
+	from { color: black; border-color: #1abc9c; background-color: #e8f8f5; }
+	to { color: white; border-color: #148f77; background-color: #0e6655; }
+}
+
+.searchHovered{
+	font-size: 20px;
+	font-weight: bold;
+	border-color: #1abc9c;
 	cursor: pointer;
+	border-color: #148f77;
+	background-color: #0e6655;
+	color: white;
+	animation: searchHover 0.3s;
 }
 
 @keyframes textBoxSelected{
@@ -101,7 +125,6 @@ input[type=submit]:hover{
 	color: white;
 	animation: buttonOn 0.3s;
 }
-
 
 @keyframes buttonOff {
 	from { color: white; border-color: #148f77; background-color: #0e6655; }

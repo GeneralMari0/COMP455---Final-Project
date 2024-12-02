@@ -149,7 +149,11 @@ const SearchPanel = ({ onSearch }) => {
 	        </div>
 	    </div>
 	    <div>
-	        <input type="submit" value="Search!" />
+	        <input type="submit"
+	    	 value="Search!"
+	         className="initSearch"
+	         onMouseEnter={(e) => e.target.className = "searchHovered"}
+	         onMouseLeave={(e) => e.target.className = "searchUnhovered"}/>
 	    </div>
         </form>
     );

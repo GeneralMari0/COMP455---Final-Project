@@ -1,7 +1,7 @@
 1. Download ElasticSearch 8.16.1 (https://www.elastic.co/downloads/elasticsearch), and extract the archive.
 2. Enter the folder containing the contents of the archive and run bin\elasticsearch.bat. (bin/elasticsearch on Linux)
 
-**NOTE**: If the Java JDK bundled with ElasticSearch does not work out of the box, it may be easier to install Java system-wide. (https://www.java.com/en/download)
+**NOTE**: Download the correct version of ElasticSearch for your operating system, otherwise the bundled Java JDK will not work. If Java is still not detected after verifying this, it may be easier to install Java system-wide. (https://www.java.com/en/download)
 
 3. Shutdown the server (Ctrl+C).
 4. Set the following from the default of `true` to `false` in config\elasticsearch.yml:
@@ -25,6 +25,7 @@ python -m pip install Flask Flask-Cors elasticsearch-dsl
 python app.py
 ```
 
+**NOTE**: After running the following command, the index will be saved to disk, and will persist across ElasticSearch restarts.
 10. Open a new terminal **in the backend folder** and populate the database:
 ```bash
 python populate_db.py

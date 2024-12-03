@@ -38,17 +38,15 @@ def get_books():
     min_rating = request.args.get('min_rating', None, type=float)
     max_rating = request.args.get('max_rating', None, type=float)
     totalratings = request.args.get('totalratings', 0, type=int)
-    print(totalratings)
 
     # Base search
     s = Search(index='books')
 
     # Get top 10 books in selected genre
-    r = s
+    r = s.filter('range', totalratings={'gte': 100000})
     if genre_list:
         for genre in genre_list:
             r = r.filter('term', genre=genre)
-    r = r.filter('range', totalratings={'gte': 100000})
     r = r.sort('-rating')
 
     # Apply filters

@@ -13,7 +13,7 @@ const App = () => {
             if (filters.title) params.title = filters.title;
             if (filters.author) params.author = filters.author;
             if (filters.description) params.description = filters.description;
-            if (filters.isbn13) params.isbn13 = filters.isbn13;
+            if (filters.isbn) params.isbn = filters.isbn;
             if (filters.minPages) params.min_pages = filters.minPages;
             if (filters.maxPages) params.max_pages = filters.maxPages;
             if (filters.minRating) params.min_rating = filters.minRating;

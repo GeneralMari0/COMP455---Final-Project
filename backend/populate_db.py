@@ -59,7 +59,7 @@ def init_es():
                     # Remove duplicates (Many books in the original dataset have duplicated genres for some reason)
                     genres_list = list(set(genres_list))
                     img = row.get('img', '')
-                    isbn13 = row.get('isbn13', '')
+                    isbn = row.get('isbn', '')
                     link = row.get('link', '')
                     pages = int(float(row['pages'])) if row.get('pages') else 0
                     rating = float(row['rating']) if row.get('rating') else 0.0
@@ -76,7 +76,7 @@ def init_es():
                             'description': desc,
                             'genre': genres_list,
                             'image': img,
-                            'isbn13': isbn13,
+                            'isbn': isbn,
                             'link': link,
                             'pages': pages,
                             'rating': rating,

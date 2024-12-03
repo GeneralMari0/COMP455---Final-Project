@@ -64,7 +64,7 @@ const BookResults = ({ books }) => {
                                         <strong>Rating:</strong> {book.rating}
                                     </p>
                                     <p>
-                                        <strong>ISBN13:</strong> {book.isbn13}
+                                        <strong>ISBN:</strong> {book.isbn}
                                     </p>
                                     <p className="description">
                                         <strong>Description:</strong> {book.description}
@@ -139,7 +139,7 @@ const BookResults = ({ books }) => {
                                         <strong>Rating:</strong> {book.rating}
                                     </p>
                                     <p>
-                                        <strong>ISBN13:</strong> {book.isbn13}
+                                        <strong>ISBN:</strong> {book.isbn}
                                     </p>
                                     <p className="description">
                                         <strong>Description:</strong> {book.description}

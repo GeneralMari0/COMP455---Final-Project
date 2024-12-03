@@ -4,7 +4,7 @@ const SearchPanel = ({ onSearch }) => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [description, setDescription] = useState('');
-    const [isbn13, setIsbn13] = useState('');
+    const [isbn, setIsbn] = useState('');
     const [minPages, setMinPages] = useState('');
     const [maxPages, setMaxPages] = useState('');
     const [minRating, setMinRating] = useState('');
@@ -30,7 +30,7 @@ const SearchPanel = ({ onSearch }) => {
             title,
             author,
             description,
-            isbn13,
+            isbn,
             minPages,
             maxPages,
             minRating,
@@ -77,9 +77,9 @@ const SearchPanel = ({ onSearch }) => {
                 />
                 <input
                     type="text"
-                    placeholder="ISBN13"
-                    value={isbn13}
-                    onChange={(e) => setIsbn13(e.target.value)}
+                    placeholder="ISBN"
+                    value={isbn}
+                    onChange={(e) => setIsbn(e.target.value)}
 	    	    onFocus={(e) => e.target.className = "textBoxSelected"}
 	    	    onBlur={(e) => e.target.className = "textBoxDeselected"}
                 />

@@ -16,7 +16,7 @@ class Book(Document):
     pages = Integer()
     description = Text()
     image = Text()
-    isbn13 = Text()
+    isbn = Text()
     link = Text()
     rating = Float()
     totalratings = Integer()
@@ -31,7 +31,7 @@ def get_books():
     title = request.args.get('title', '', type=str)
     author = request.args.get('author', '', type=str)
     description = request.args.get('description', '', type=str)
-    isbn13 = request.args.get('isbn13', '', type=str)
+    isbn = request.args.get('isbn', '', type=str)
     genre_list = request.args.getlist('genre')
     max_pages = request.args.get('max_pages', None, type=int)
     min_pages = request.args.get('min_pages', None, type=int)
@@ -56,8 +56,8 @@ def get_books():
         s = s.query('match_phrase_prefix', author=author)
     if description:
         s = s.query('match_phrase', description=description)
-    if isbn13:
-        s = s.filter('term', isbn13=isbn13)
+    if isbn:
+        s = s.filter('term', isbn=isbn)
     # Right now we match ALL genres, if we want to match ANY genres, use this code instead
     # I might make it so the user can choose ALL or ANY depending on their preference
     # But right now this should be good enough for the assignment
@@ -102,7 +102,7 @@ def get_books():
             "pages": book.pages,
             "description": book.description,
             "image": book.image,
-            "isbn13": book.isbn13,
+            "isbn": book.isbn,
             "link": book.link,
             "rating": book.rating
         }
@@ -118,7 +118,7 @@ def get_books():
             "pages": book.pages,
             "description": book.description,
             "image": book.image,
-            "isbn13": book.isbn13,
+            "isbn": book.isbn,
             "link": book.link,
             "rating": book.rating
 	}

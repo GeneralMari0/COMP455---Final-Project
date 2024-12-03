@@ -19,6 +19,7 @@ class Book(Document):
     isbn13 = Text()
     link = Text()
     rating = Float()
+    totalratings = Integer()
 
     class Index:
         name = 'books'
@@ -36,9 +37,19 @@ def get_books():
     min_pages = request.args.get('min_pages', None, type=int)
     min_rating = request.args.get('min_rating', None, type=float)
     max_rating = request.args.get('max_rating', None, type=float)
+    totalratings = request.args.get('totalratings', 0, type=int)
+    print(totalratings)
 
     # Base search
     s = Search(index='books')
+
+    # Get top 10 books in selected genre
+    r = s
+    if genre_list:
+        for genre in genre_list:
+            r = r.filter('term', genre=genre)
+    r = r.filter('range', totalratings={'gte': 100000})
+    r = r.sort('-rating')
 
     # Apply filters
     if title:
@@ -75,9 +86,14 @@ def get_books():
     # Limit the results to 50
     s = s[:50]
 
+    # Limit top 10 to 10
+    r = r[:10]
+
     # Execute search and serialize results
     response = s.execute()
+    top10response = r.execute()
     books = response.hits
+    top10 = top10response.hits
 
     result = [
         {
@@ -95,7 +111,23 @@ def get_books():
         for book in books
     ]
 
-    return jsonify(result)
+    top10results = [
+	{
+            "id": book.meta.id,
+            "title": book.title,
+            "author": book.author,
+            "genre": list(book.genre),
+            "pages": book.pages,
+            "description": book.description,
+            "image": book.image,
+            "isbn13": book.isbn13,
+            "link": book.link,
+            "rating": book.rating
+	}
+	for book in top10
+    ]
+
+    return jsonify({"books": result, "top10": top10results})
 
 if __name__ == '__main__':
     app.run(debug=True)

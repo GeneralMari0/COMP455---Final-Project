@@ -60,6 +60,7 @@ def init_es():
                     link = row.get('link', '')
                     pages = int(float(row['pages'])) if row.get('pages') else 0
                     rating = float(row['rating']) if row.get('rating') else 0.0
+                    totalratings = int(row['totalratings']) if row.get('totalratings') else 0
 
                     # Prepare the action for bulk indexing
                     # https://www.geeksforgeeks.org/bulk-indexing-for-efficient-data-ingestion-in-elasticsearch/#
@@ -79,7 +80,8 @@ def init_es():
                             'isbn13': isbn13,
                             'link': link,
                             'pages': pages,
-                            'rating': rating
+                            'rating': rating,
+			    'totalratings': totalratings
                         }
                     }
                     actions.append(action)

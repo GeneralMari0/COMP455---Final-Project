@@ -27,7 +27,15 @@ is not scalable. Thus, we switched to using Elasticsearch, a popular search engi
 in the industry, checking off our "speed" requirement.
 
 ## Screenshots
-> TODO: add screenshots of the website showing results for different queries
+Title and Author fields allow for typos:
+![Fuzzy Search Example](./screenshots/fuzzy_search.jpg)
+
+ISBN only returns the exact match:
+![ISBN Search Example](./screenshots/isbn_exact_match.jpg)
+
+Top 10 list updates based on the selected genres:
+![top 10 updating](./screenshots/top_10_by_genre.jpg)
+
 
 ## Conclusion
 We used the techniques we discussed in class and combined them with industry standard tools to create Readly,

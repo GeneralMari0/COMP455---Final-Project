@@ -82,7 +82,7 @@ const BookResults = ({ books }) => {
                     )}
                 </div>
                 <div className="recommendations">
-		    <h3>Best similar books</h3>
+		    <h3>Top 10 Rated Books in Your Genres</h3>
 	 	    {books.top10.length === 0 ? (
                         <p>No recommendations found</p>
                     ) : (

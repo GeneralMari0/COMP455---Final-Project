@@ -1,12 +1,21 @@
+from elasticsearch_dsl import (
+    Document,
+    Float,
+    Integer,
+    Keyword,
+    Search,
+    Text,
+    connections,
+)
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from elasticsearch_dsl import Document, Text, Integer, Search, connections, Float, Keyword
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for cross-origin requests (separate frontend)
 
 # Connect to Elasticsearch
-connections.create_connection(hosts=['http://localhost:9200'])
+connections.create_connection(hosts=["http://localhost:9200"])
+
 
 # Book model
 class Book(Document):
@@ -22,42 +31,52 @@ class Book(Document):
     totalratings = Integer()
 
     class Index:
-        name = 'books'
+        name = "books"
+
 
 # Endpoint to get books based on filters
-@app.route('/api/books', methods=['GET'])
+@app.route("/api/books", methods=["GET"])
 def get_books():
     # Get filter parameters from query string
-    title = request.args.get('title', '', type=str)
-    author = request.args.get('author', '', type=str)
-    description = request.args.get('description', '', type=str)
-    isbn = request.args.get('isbn', '', type=str)
-    genre_list = request.args.getlist('genre')
-    max_pages = request.args.get('max_pages', None, type=int)
-    min_pages = request.args.get('min_pages', None, type=int)
-    min_rating = request.args.get('min_rating', None, type=float)
-    max_rating = request.args.get('max_rating', None, type=float)
-    totalratings = request.args.get('totalratings', 0, type=int)
+    title = request.args.get("title", "", type=str)
+    author = request.args.get("author", "", type=str)
+    description = request.args.get("description", "", type=str)
+    isbn = request.args.get("isbn", "", type=str)
+    genre_list = request.args.getlist("genre")
+    max_pages = request.args.get("max_pages", None, type=int)
+    min_pages = request.args.get("min_pages", None, type=int)
+    min_rating = request.args.get("min_rating", None, type=float)
+    max_rating = request.args.get("max_rating", None, type=float)
+    totalratings = request.args.get("totalratings", 0, type=int)
 
     # Base search
-    s = Search(index='books')
+    s = Search(index="books")
 
     # Get top 10 books in selected genre
-    r = s.filter('range', totalratings={'gte': 100000})
+    r = s.filter("range", totalratings={"gte": 100000})
     if genre_list:
         for genre in genre_list:
-            r = r.filter('term', genre=genre)
-    r = r.sort('-rating')
+            r = r.filter("term", genre=genre)
+    r = r.sort("-rating")
 
     # Apply filters
     if title:
-        s = s.query('match_phrase_prefix', title=title)
+        # search in both the title and description fields for better results
+        # fuzziness allows for minor misspellings/variation
+        s = s.query('multi_match',
+            query=title,
+            fields=['title', 'description'],
+            type='most_fields',
+            fuzziness='AUTO'
+        )
     if author:
-        s = s.query('match_phrase_prefix', author=author)
+        # s = s.query('match_phrase_prefix', author=author)
+        # fuzzy search instead
+        s = s.query("match", author={"query": author, "fuzziness": "AUTO"})
     if description:
-        s = s.query('match_phrase', description=description)
+        s = s.query("match_phrase", description=description)
     if isbn:
-        s = s.filter('term', isbn=isbn)
+        s = s.filter("term", isbn=isbn)
     # Right now we match ALL genres, if we want to match ANY genres, use this code instead
     # I might make it so the user can choose ALL or ANY depending on their preference
     # But right now this should be good enough for the assignment
@@ -65,21 +84,21 @@ def get_books():
     #     s = s.filter('terms', genre=genre_list)
     if genre_list:
         for genre in genre_list:
-            s = s.filter('term', genre=genre)
+            s = s.filter("term", genre=genre)
     if max_pages is not None or min_pages is not None:
         page_range = {}
         if min_pages is not None:
-            page_range['gte'] = min_pages
+            page_range["gte"] = min_pages
         if max_pages is not None:
-            page_range['lte'] = max_pages
-        s = s.filter('range', pages=page_range)
+            page_range["lte"] = max_pages
+        s = s.filter("range", pages=page_range)
     if min_rating is not None or max_rating is not None:
         rating_range = {}
         if min_rating is not None:
-            rating_range['gte'] = min_rating
+            rating_range["gte"] = min_rating
         if max_rating is not None:
-            rating_range['lte'] = max_rating
-        s = s.filter('range', rating=rating_range)
+            rating_range["lte"] = max_rating
+        s = s.filter("range", rating=rating_range)
 
     # Limit the results to 50
     s = s[:50]
@@ -104,13 +123,13 @@ def get_books():
             "image": book.image,
             "isbn": book.isbn,
             "link": book.link,
-            "rating": book.rating
+            "rating": book.rating,
         }
         for book in books
     ]
 
     top10results = [
-	{
+        {
             "id": book.meta.id,
             "title": book.title,
             "author": book.author,
@@ -120,12 +139,13 @@ def get_books():
             "image": book.image,
             "isbn": book.isbn,
             "link": book.link,
-            "rating": book.rating
-	}
-	for book in top10
+            "rating": book.rating,
+        }
+        for book in top10
     ]
 
     return jsonify({"books": result, "top10": top10results})
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)
